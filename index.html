@@ -11,7 +11,7 @@
         :root {
             --primary-gold: #ffd700;
             --primary-purple: #240b36;
-            --glass-bg: rgba(255, 255, 255, 0.08); /* मोबाइल पर थोड़ा ज्यादा विजिबल */
+            --glass-bg: rgba(255, 255, 255, 0.08);
             --border-glow: 1px solid rgba(255, 255, 255, 0.15);
         }
 
@@ -23,18 +23,17 @@
             background-image: radial-gradient(circle at 50% 50%, #302b63, #0f0c29);
             color: white;
             min-height: 100vh;
-            overflow-x: hidden; /* क्षैतिज स्क्रॉल रोकेगा */
+            overflow-x: hidden;
         }
 
-        /* --- HEADER (Mobile Optimized) --- */
+        /* --- HEADER --- */
         header {
             text-align: center;
-            padding: 80px 20px 40px; /* ऊपर थोड़ी जगह, ताकि मोबाइल में कैमरा नौच से न कटे */
+            padding: 80px 20px 40px;
             position: relative;
             overflow: hidden;
         }
 
-        /* घूमती हुई लाइट्स */
         header::before {
             content: '';
             position: absolute;
@@ -47,28 +46,21 @@
             z-index: -1;
         }
 
-        @keyframes rotate {
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
 
         .logo-img {
-            width: 140px; /* मोबाइल के लिए स्टैंडर्ड साइज */
+            width: 140px;
             height: auto;
             filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.5)); 
             transition: transform 0.3s;
         }
-
         .logo-img:hover { transform: scale(1.05); }
 
-        /* रिस्पॉन्सिव टेक्स्ट साइज (महत्वपूर्ण सुधार) */
         h1 {
             font-weight: 900;
-            /* यह जादुई लाइन फोंट को स्क्रीन के हिसाब से छोटा-बड़ा करेगी */
             font-size: clamp(1.8rem, 5vw, 3rem); 
             margin: 15px 0 5px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 1.2;
             background: linear-gradient(to right, #fff, #ffd700);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -77,15 +69,14 @@
         }
 
         p.subtitle {
-            font-size: 1rem;
+            font-size: 0.85rem;
             color: #ccc;
             letter-spacing: 2px;
             margin-bottom: 30px;
             text-transform: uppercase;
-            font-size: 0.85rem;
         }
 
-        /* --- BUTTONS (Touch Friendly) --- */
+        /* --- BUTTONS --- */
         .btn-3d {
             display: inline-block;
             background: linear-gradient(to bottom, #ffd700, #e6c200);
@@ -101,20 +92,23 @@
             margin-top: 10px;
             border: none;
             cursor: pointer;
-            -webkit-tap-highlight-color: transparent; /* मोबाइल टैप कलर हटाना */
+            -webkit-tap-highlight-color: transparent;
         }
+        .btn-3d:active { transform: translateY(4px); box-shadow: 0 0 0 #b39700, inset 0 2px 5px rgba(0,0,0,0.2); }
 
-        .btn-3d:active {
-            transform: translateY(4px);
-            box-shadow: 0 0 0 #b39700, inset 0 2px 5px rgba(0,0,0,0.2);
+        .btn-game {
+            background: linear-gradient(to bottom, #4a00e0, #8e2de2);
+            color: white;
+            box-shadow: 0 5px 0 #2a0080, 0 10px 20px rgba(0,0,0,0.4);
+            width: 80%; /* गेम बटन थोड़ा चौड़ा */
         }
+        .btn-game:active { box-shadow: 0 0 0 #2a0080, inset 0 2px 5px rgba(0,0,0,0.2); }
 
         .btn-secondary {
             background: linear-gradient(to bottom, #c31432, #8a0e23);
             color: white;
             box-shadow: 0 5px 0 #5c0916, 0 10px 20px rgba(0,0,0,0.4);
         }
-
         .btn-secondary:active { box-shadow: 0 0 0 #5c0916, inset 0 2px 5px rgba(0,0,0,0.2); }
 
         /* --- CONTAINER & CARDS --- */
@@ -123,7 +117,6 @@
             margin: 0 auto;
             padding: 20px;
             display: grid;
-            /* मोबाइल पर 1 कॉलम, टैबलेट/डेस्कटॉप पर ऑटो फिट */
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
@@ -131,14 +124,13 @@
         .card {
             background: var(--glass-bg);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px); /* Safari Mobile Fix */
+            -webkit-backdrop-filter: blur(12px);
             border: var(--border-glow);
             border-radius: 16px;
             padding: 25px;
             text-align: center;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
         }
-
         .card h2 {
             color: var(--primary-gold);
             margin-top: 0;
@@ -147,12 +139,20 @@
             padding-bottom: 10px;
             margin-bottom: 15px;
         }
-
         .card p {
             font-size: 0.95rem;
             line-height: 1.6;
             color: #ddd;
             margin-bottom: 20px;
+        }
+
+        /* --- NEW: POSTER STYLE --- */
+        .game-poster-img {
+            width: 100%;       /* कार्ड की पूरी चौड़ाई लेगा */
+            border-radius: 10px; /* कोने गोल */
+            margin-bottom: 15px;
+            border: 2px solid #ffd700; /* गोल्डन बॉर्डर */
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); /* ग्लो */
         }
 
         /* --- FOOTER --- */
@@ -164,25 +164,13 @@
             border-top: 1px solid rgba(255,255,255,0.05);
             margin-top: 40px;
             background: rgba(0,0,0,0.4);
-            line-height: 1.5;
         }
 
-        /* --- MOBILE SPECIFIC FIXES --- */
         @media (max-width: 600px) {
-            header {
-                padding-top: 60px;
-                padding-bottom: 30px;
-            }
-            .logo-img {
-                width: 120px; /* छोटी स्क्रीन पर लोगो थोड़ा छोटा */
-            }
-            .btn-3d {
-                width: 70%; /* मोबाइल पर बटन चौड़ा ताकि आसानी से दबे */
-                padding: 12px 0;
-            }
-            .container {
-                padding: 15px; /* साइड से गैप कम */
-            }
+            header { padding-top: 60px; padding-bottom: 30px; }
+            .logo-img { width: 120px; }
+            .btn-3d { width: 70%; padding: 12px 0; }
+            .container { padding: 15px; }
         }
     </style>
 </head>
@@ -190,11 +178,9 @@
 
     <header>
         <img src="logo.png" alt="NETV Logo" class="logo-img">
-        
         <h1>Nihal Entertainment<br>Television</h1>
         <p class="subtitle">THE HOME OF GENIUS</p>
-        
-        <a href="#games" class="btn-3d">🎮 Play Now</a>
+        <a href="#games" class="btn-3d">🏆 Play Game</a>
     </header>
 
     <div class="container">
@@ -210,10 +196,14 @@
             <a href="https://www.youtube.com/@NihalEntertainmentTelevision" target="_blank" class="btn-3d btn-secondary">▶ Watch</a>
         </div>
 
-        <div class="card" id="games">
+        <div class="card" id="games" style="border: 1px solid #ffd700;">
             <h2>🧠 Kaun Banega Genius</h2>
-            <p>Test your knowledge in our upcoming web-based quiz game inspired by India's biggest show.</p>
-            <span style="color: #ffd700; font-weight: bold; font-size: 0.9rem;">COMING SOON</span>
+            
+            <img src="poster.jpg" alt="Game Poster" class="game-poster-img">
+
+            <p><strong>ज्ञान का महाकुंभ!</strong><br>क्या आप हैं अगले जीनियस? अभी खेलें और जीतें!</p>
+            
+            <a href="https://kaunbanegagenius.netlify.app/" target="_blank" class="btn-3d btn-game">🎮 Play Now</a>
         </div>
 
     </div>
@@ -223,4 +213,4 @@
     </footer>
 
 </body>
-    </html>
+</html>
