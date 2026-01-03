@@ -7,11 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 1. GLOBAL SETTINGS --- */
+        /* --- GLOBAL SETTINGS --- */
         :root {
             --primary-gold: #ffd700;
             --primary-purple: #240b36;
-            --accent-red: #c31432;
             --glass-bg: rgba(255, 255, 255, 0.05);
             --border-glow: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -21,13 +20,12 @@
             padding: 0;
             font-family: 'Montserrat', sans-serif;
             background-color: #0f0c29;
-            /* KBC जैसा रॉयल बैकग्राउंड (CSS Gradient - No Copyright Risk) */
             background-image: radial-gradient(circle at 50% 50%, #302b63, #0f0c29);
             color: white;
             min-height: 100vh;
         }
 
-        /* --- 2. HEADER (The Hero Section) --- */
+        /* --- HEADER --- */
         header {
             text-align: center;
             padding: 60px 20px;
@@ -35,7 +33,6 @@
             overflow: hidden;
         }
 
-        /* पीछे घूमती हुई लाइट्स (Spotlight Effect) */
         header::before {
             content: '';
             position: absolute;
@@ -52,18 +49,14 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Logo Styling - ब्रांड जैसा लुक */
         .logo-img {
             width: 150px;
             height: auto;
-            /* प्रोफाइल बॉर्डर हटा दिया, अब सिर्फ ग्लो है */
             filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6)); 
             transition: transform 0.3s;
         }
 
-        .logo-img:hover {
-            transform: scale(1.05);
-        }
+        .logo-img:hover { transform: scale(1.05); }
 
         h1 {
             font-weight: 900;
@@ -84,7 +77,7 @@
             margin-bottom: 30px;
         }
 
-        /* --- 3. 3D BUTTONS (Gaming Style) --- */
+        /* --- BUTTONS --- */
         .btn-3d {
             display: inline-block;
             background: linear-gradient(to bottom, #ffd700, #e6c200);
@@ -94,7 +87,7 @@
             font-weight: 800;
             text-decoration: none;
             border-radius: 50px;
-            box-shadow: 0 6px 0 #b39700, 0 10px 10px rgba(0,0,0,0.3); /* 3D Shadow */
+            box-shadow: 0 6px 0 #b39700, 0 10px 10px rgba(0,0,0,0.3);
             transition: all 0.1s;
             text-transform: uppercase;
             margin-top: 20px;
@@ -103,7 +96,7 @@
         }
 
         .btn-3d:active {
-            transform: translateY(6px); /* बटन दबने का फील */
+            transform: translateY(6px);
             box-shadow: 0 0 0 #b39700, inset 0 2px 5px rgba(0,0,0,0.2);
         }
 
@@ -113,11 +106,9 @@
             box-shadow: 0 6px 0 #5c0916, 0 10px 10px rgba(0,0,0,0.3);
         }
 
-        .btn-secondary:active {
-            box-shadow: 0 0 0 #5c0916, inset 0 2px 5px rgba(0,0,0,0.2);
-        }
+        .btn-secondary:active { box-shadow: 0 0 0 #5c0916, inset 0 2px 5px rgba(0,0,0,0.2); }
 
-        /* --- 4. CARDS (Glassmorphism) --- */
+        /* --- CARDS --- */
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -129,7 +120,7 @@
 
         .card {
             background: var(--glass-bg);
-            backdrop-filter: blur(10px); /* धुंधला कांच */
+            backdrop-filter: blur(10px);
             border: var(--border-glow);
             border-radius: 20px;
             padding: 30px;
@@ -161,11 +152,12 @@
         /* --- FOOTER --- */
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 30px;
             font-size: 0.9rem;
-            color: #666;
+            color: #888;
             border-top: 1px solid rgba(255,255,255,0.05);
             margin-top: 50px;
+            background: rgba(0,0,0,0.3);
         }
     </style>
 </head>
@@ -202,9 +194,8 @@
     </div>
 
     <footer>
-        &copy; 2026 Nihal Entertainment Television. <br>
-        Built for the Fans. No Copyright Infringement Intended.
+        <p>&copy; Copyright 2026 <strong>Nihal Pictures Entertainment</strong>. All rights reserved.</p>
     </footer>
 
 </body>
-</html>
+    </html>
