@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official website of Nihal Entertainment Television. Play Kaun Banega Genius and watch tech videos.">
     <title>Nihal Entertainment Television | Official</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     
@@ -26,14 +27,18 @@
             overflow-x: hidden;
         }
 
-        /* --- HEADER --- */
+        /* --- HEADER SECTION --- */
         header {
             text-align: center;
-            padding: 80px 20px 40px;
+            padding: 40px 20px;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
+        /* Rotating Lights Background */
         header::before {
             content: '';
             position: absolute;
@@ -45,35 +50,46 @@
             animation: rotate 10s linear infinite;
             z-index: -1;
         }
-
         @keyframes rotate { 100% { transform: rotate(360deg); } }
 
         .logo-img {
-            width: 140px;
+            width: 120px;
             height: auto;
             filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.5)); 
-            transition: transform 0.3s;
+            margin-bottom: 10px;
         }
-        .logo-img:hover { transform: scale(1.05); }
 
         h1 {
             font-weight: 900;
-            font-size: clamp(1.8rem, 5vw, 3rem); 
-            margin: 15px 0 5px;
+            font-size: clamp(1.5rem, 4vw, 2.5rem); 
+            margin: 5px 0;
             text-transform: uppercase;
             background: linear-gradient(to right, #fff, #ffd700);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0px 4px 10px rgba(0,0,0,0.5);
-            padding: 0 10px;
         }
 
-        p.subtitle {
-            font-size: 0.85rem;
-            color: #ccc;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-            text-transform: uppercase;
+        /* --- NEW: BIG HERO BANNER (ACCESSIBLE) --- */
+        .hero-banner-container {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 600px; /* डेस्कटॉप पर बहुत बड़ा नहीं होगा */
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        /* जब कोई माउस या टैब से फोकस करे तो बैनर बड़ा हो */
+        .hero-banner-container:hover, .hero-banner-container:focus-within {
+            transform: scale(1.03);
+        }
+
+        .hero-banner-img {
+            width: 100%;
+            border-radius: 15px;
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+            display: block;
         }
 
         /* --- BUTTONS --- */
@@ -89,20 +105,18 @@
             box-shadow: 0 5px 0 #b39700, 0 10px 20px rgba(0,0,0,0.4);
             transition: all 0.1s;
             text-transform: uppercase;
-            margin-top: 10px;
+            margin-top: 25px;
             border: none;
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
         }
         .btn-3d:active { transform: translateY(4px); box-shadow: 0 0 0 #b39700, inset 0 2px 5px rgba(0,0,0,0.2); }
 
-        .btn-game {
-            background: linear-gradient(to bottom, #4a00e0, #8e2de2);
-            color: white;
-            box-shadow: 0 5px 0 #2a0080, 0 10px 20px rgba(0,0,0,0.4);
-            width: 80%; /* गेम बटन थोड़ा चौड़ा */
+        /* Focus State for Accessibility (Keyboard Navigation) */
+        a:focus {
+            outline: 3px solid #fff;
+            outline-offset: 4px;
         }
-        .btn-game:active { box-shadow: 0 0 0 #2a0080, inset 0 2px 5px rgba(0,0,0,0.2); }
 
         .btn-secondary {
             background: linear-gradient(to bottom, #c31432, #8a0e23);
@@ -111,7 +125,7 @@
         }
         .btn-secondary:active { box-shadow: 0 0 0 #5c0916, inset 0 2px 5px rgba(0,0,0,0.2); }
 
-        /* --- CONTAINER & CARDS --- */
+        /* --- CARDS --- */
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -146,15 +160,6 @@
             margin-bottom: 20px;
         }
 
-        /* --- NEW: POSTER STYLE --- */
-        .game-poster-img {
-            width: 100%;       /* कार्ड की पूरी चौड़ाई लेगा */
-            border-radius: 10px; /* कोने गोल */
-            margin-bottom: 15px;
-            border: 2px solid #ffd700; /* गोल्डन बॉर्डर */
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); /* ग्लो */
-        }
-
         /* --- FOOTER --- */
         footer {
             text-align: center;
@@ -165,22 +170,20 @@
             margin-top: 40px;
             background: rgba(0,0,0,0.4);
         }
-
-        @media (max-width: 600px) {
-            header { padding-top: 60px; padding-bottom: 30px; }
-            .logo-img { width: 120px; }
-            .btn-3d { width: 70%; padding: 12px 0; }
-            .container { padding: 15px; }
-        }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="logo.png" alt="NETV Logo" class="logo-img">
+        <img src="logo.png" alt="Nihal Entertainment Television Channel Logo" class="logo-img">
+        
         <h1>Nihal Entertainment<br>Television</h1>
-        <p class="subtitle">THE HOME OF GENIUS</p>
-        <a href="#games" class="btn-3d">🏆 Play Game</a>
+        
+        <a href="https://kaunbanegagenius.netlify.app/" class="hero-banner-container" aria-label="Play Kaun Banega Genius Game - Click on poster to start">
+            <img src="poster.jpg" alt="Poster of Kaun Banega Genius Game. Text says: Gyan ka Mahakumbh. Click to Play." class="hero-banner-img">
+        </a>
+        
+        <a href="https://kaunbanegagenius.netlify.app/" class="btn-3d" aria-label="Start Game Now">🏆 Play Game Now</a>
     </header>
 
     <div class="container">
@@ -193,17 +196,227 @@
         <div class="card">
             <h2>🎥 Latest Videos</h2>
             <p>Catch up with our latest episodes and tutorials directly on YouTube.</p>
-            <a href="https://www.youtube.com/@NihalEntertainmentTelevision" target="_blank" class="btn-3d btn-secondary">▶ Watch</a>
+            <a href="https://www.youtube.com/@NihalEntertainmentTelevision" target="_blank" class="btn-3d btn-secondary" aria-label="Visit YouTube Channel to watch videos">▶ Watch Videos</a>
         </div>
 
-        <div class="card" id="games" style="border: 1px solid #ffd700;">
-            <h2>🧠 Kaun Banega Genius</h2>
-            
-            <img src="poster.jpg" alt="Game Poster" class="game-poster-img">
+        <div class="card" id="games">
+            <h2>🧠 Game Details</h2>
+            <p><strong>Kaun Banega Genius</strong><br>Test your knowledge and become the next genius.</p>
+            <a href="https://kaunbanegagenius.netlify.app/" target="_blank" class="btn-3d" aria-label="Play Kaun Banega Genius">🎮 Play Now</a>
+        </div>
 
-            <p><strong>ज्ञान का महाकुंभ!</strong><br>क्या आप हैं अगले जीनियस? अभी खेलें और जीतें!</p>
-            
-            <a href="https://kaunbanegagenius.netlify.app/" target="_blank" class="btn-3d btn-game">🎮 Play Now</a>
+    </div>
+
+    <footer>
+        <p>&copy; Copyright 2026 <strong>Nihal Pictures Entertainment</strong>.<br>All rights reserved.</p>
+    </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official website of Nihal Entertainment Television. Play Kaun Banega Genius and watch tech videos.">
+    <title>Nihal Entertainment Television | Official</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- GLOBAL SETTINGS --- */
+        :root {
+            --primary-gold: #ffd700;
+            --primary-purple: #240b36;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --border-glow: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0f0c29;
+            background-image: radial-gradient(circle at 50% 50%, #302b63, #0f0c29);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER SECTION --- */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Rotating Lights Background */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(142, 45, 226, 0.3), transparent 30%);
+            animation: rotate 10s linear infinite;
+            z-index: -1;
+        }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
+
+        .logo-img {
+            width: 120px;
+            height: auto;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.5)); 
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-weight: 900;
+            font-size: clamp(1.5rem, 4vw, 2.5rem); 
+            margin: 5px 0;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 4px 10px rgba(0,0,0,0.5);
+        }
+
+        /* --- NEW: BIG HERO BANNER (ACCESSIBLE) --- */
+        .hero-banner-container {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 600px; /* डेस्कटॉप पर बहुत बड़ा नहीं होगा */
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        /* जब कोई माउस या टैब से फोकस करे तो बैनर बड़ा हो */
+        .hero-banner-container:hover, .hero-banner-container:focus-within {
+            transform: scale(1.03);
+        }
+
+        .hero-banner-img {
+            width: 100%;
+            border-radius: 15px;
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+            display: block;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-3d {
+            display: inline-block;
+            background: linear-gradient(to bottom, #ffd700, #e6c200);
+            color: #240b36;
+            padding: 15px 40px;
+            font-size: 1rem;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 5px 0 #b39700, 0 10px 20px rgba(0,0,0,0.4);
+            transition: all 0.1s;
+            text-transform: uppercase;
+            margin-top: 25px;
+            border: none;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn-3d:active { transform: translateY(4px); box-shadow: 0 0 0 #b39700, inset 0 2px 5px rgba(0,0,0,0.2); }
+
+        /* Focus State for Accessibility (Keyboard Navigation) */
+        a:focus {
+            outline: 3px solid #fff;
+            outline-offset: 4px;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(to bottom, #c31432, #8a0e23);
+            color: white;
+            box-shadow: 0 5px 0 #5c0916, 0 10px 20px rgba(0,0,0,0.4);
+        }
+        .btn-secondary:active { box-shadow: 0 0 0 #5c0916, inset 0 2px 5px rgba(0,0,0,0.2); }
+
+        /* --- CARDS --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: var(--border-glow);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+        .card h2 {
+            color: var(--primary-gold);
+            margin-top: 0;
+            font-size: 1.3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.8rem;
+            color: #888;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 40px;
+            background: rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Nihal Entertainment Television Channel Logo" class="logo-img">
+        
+        <h1>Nihal Entertainment<br>Television</h1>
+        
+        <a href="https://kaunbanegagenius.netlify.app/" class="hero-banner-container" aria-label="Play Kaun Banega Genius Game - Click on poster to start">
+            <img src="poster.jpg" alt="Poster of Kaun Banega Genius Game. Text says: Gyan ka Mahakumbh. Click to Play." class="hero-banner-img">
+        </a>
+        
+        <a href="https://kaunbanegagenius.netlify.app/" class="btn-3d" aria-label="Start Game Now">🏆 Play Game Now</a>
+    </header>
+
+    <div class="container">
+        
+        <div class="card">
+            <h2>📺 The Channel</h2>
+            <p>Welcome to the official digital hub of NETV. We bring you the best in tech tutorials, gaming updates, and entertainment.</p>
+        </div>
+
+        <div class="card">
+            <h2>🎥 Latest Videos</h2>
+            <p>Catch up with our latest episodes and tutorials directly on YouTube.</p>
+            <a href="https://www.youtube.com/@NihalEntertainmentTelevision" target="_blank" class="btn-3d btn-secondary" aria-label="Visit YouTube Channel to watch videos">▶ Watch Videos</a>
+        </div>
+
+        <div class="card" id="games">
+            <h2>🧠 Game Details</h2>
+            <p><strong>Kaun Banega Genius</strong><br>Test your knowledge and become the next genius.</p>
+            <a href="https://kaunbanegagenius.netlify.app/" target="_blank" class="btn-3d" aria-label="Play Kaun Banega Genius">🎮 Play Now</a>
         </div>
 
     </div>
