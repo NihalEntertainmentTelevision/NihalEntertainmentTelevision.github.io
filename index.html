@@ -1,59 +1,210 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nihal Entertainment Television</title>
+    <title>Nihal Entertainment Television | Official</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <style>
-        body { margin: 0; padding: 0; font-family: sans-serif; background-color: #0a0a12; color: white; }
+        /* --- 1. GLOBAL SETTINGS --- */
+        :root {
+            --primary-gold: #ffd700;
+            --primary-purple: #240b36;
+            --accent-red: #c31432;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --border-glow: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0f0c29;
+            /* KBC जैसा रॉयल बैकग्राउंड (CSS Gradient - No Copyright Risk) */
+            background-image: radial-gradient(circle at 50% 50%, #302b63, #0f0c29);
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* --- 2. HEADER (The Hero Section) --- */
         header {
-            background: linear-gradient(135deg, #1a0b2e 0%, #4a00e0 100%);
-            height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; border-bottom: 4px solid #00d2ff; position: relative;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
         }
-        .logo-container img {
-            width: 120px; height: 120px; border-radius: 50%; border: 4px solid white;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.6); object-fit: cover; background-color: white;
+
+        /* पीछे घूमती हुई लाइट्स (Spotlight Effect) */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(142, 45, 226, 0.3), transparent 30%);
+            animation: rotate 10s linear infinite;
+            z-index: -1;
         }
-        h1 { margin-top: 15px; font-size: 2.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        p.tagline { font-size: 1.2rem; color: #ccc; margin-top: -10px; }
-        nav { background-color: #161625; padding: 15px; text-align: center; position: sticky; top: 0; }
-        nav a { color: white; text-decoration: none; margin: 0 15px; font-size: 1.1rem; font-weight: bold; }
-        .container { max-width: 1000px; margin: 20px auto; padding: 20px; text-align: center; }
-        .card { background-color: #1e1e2f; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
-        .btn { display: inline-block; padding: 10px 20px; background-color: #e50914; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 10px; }
-        footer { background-color: #0d0d10; text-align: center; padding: 20px; margin-top: 40px; color: #777; }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Logo Styling - ब्रांड जैसा लुक */
+        .logo-img {
+            width: 150px;
+            height: auto;
+            /* प्रोफाइल बॉर्डर हटा दिया, अब सिर्फ ग्लो है */
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6)); 
+            transition: transform 0.3s;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-weight: 900;
+            font-size: 2.5rem;
+            margin: 15px 0 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 4px 10px rgba(0,0,0,0.5);
+        }
+
+        p.subtitle {
+            font-size: 1rem;
+            color: #ccc;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        /* --- 3. 3D BUTTONS (Gaming Style) --- */
+        .btn-3d {
+            display: inline-block;
+            background: linear-gradient(to bottom, #ffd700, #e6c200);
+            color: #240b36;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 6px 0 #b39700, 0 10px 10px rgba(0,0,0,0.3); /* 3D Shadow */
+            transition: all 0.1s;
+            text-transform: uppercase;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-3d:active {
+            transform: translateY(6px); /* बटन दबने का फील */
+            box-shadow: 0 0 0 #b39700, inset 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(to bottom, #c31432, #8a0e23);
+            color: white;
+            box-shadow: 0 6px 0 #5c0916, 0 10px 10px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary:active {
+            box-shadow: 0 0 0 #5c0916, inset 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* --- 4. CARDS (Glassmorphism) --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px); /* धुंधला कांच */
+            border: var(--border-glow);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary-gold);
+        }
+
+        .card h2 {
+            color: var(--primary-gold);
+            margin-top: 0;
+            font-size: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+
+        .card p {
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 25px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 50px;
+        }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="Channel Logo">
-        </div>
-        <h1>Nihal Entertainment Television</h1>
-        <p class="tagline">Official Website | Games, Tech & Fun</p>
+        <img src="logo.png" alt="NETV Logo" class="logo-img">
+        
+        <h1>Nihal Entertainment<br>Television</h1>
+        <p class="subtitle">THE HOME OF GENIUS</p>
+        
+        <a href="#games" class="btn-3d">🎮 Play Now</a>
     </header>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#videos">Videos</a>
-        <a href="#games">Games</a>
-    </nav>
-    <div class="container" id="home">
+
+    <div class="container">
+        
         <div class="card">
-            <h2>Welcome to NETV</h2>
-            <p>स्वागत है <strong>Nihal Entertainment Television</strong> की वेबसाइट पर!</p>
+            <h2>📺 The Channel</h2>
+            <p>Welcome to the official digital hub of NETV. We bring you the best in tech tutorials, gaming updates, and entertainment.</p>
         </div>
-        <div class="card" id="videos">
-            <h2>Latest Videos</h2>
-            <a href="https://www.youtube.com/@NihalEntertainmentTelevision" class="btn">▶ Visit YouTube Channel</a>
+
+        <div class="card">
+            <h2>🎥 Latest Videos</h2>
+            <p>Catch up with our latest episodes and tutorials directly on YouTube.</p>
+            <a href="https://www.youtube.com/@NihalEntertainmentTelevision" target="_blank" class="btn-3d btn-secondary">▶ Watch</a>
         </div>
+
         <div class="card" id="games">
-            <h2>My Games</h2>
-            <p>Coming Soon: <strong>Kaun Banega Genius</strong></p>
+            <h2>🧠 Kaun Banega Genius</h2>
+            <p>Test your knowledge in our upcoming web-based quiz game inspired by India's biggest show.</p>
+            <span style="color: #ffd700; font-weight: bold; font-size: 0.9rem;">COMING SOON</span>
         </div>
+
     </div>
+
     <footer>
-        <p>&copy; 2026 Nihal Entertainment Television.</p>
+        &copy; 2026 Nihal Entertainment Television. <br>
+        Built for the Fans. No Copyright Infringement Intended.
     </footer>
+
 </body>
 </html>
