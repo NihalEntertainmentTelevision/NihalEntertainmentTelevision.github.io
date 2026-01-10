@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Official website of Nihal Entertainment Television. Watch Kaun Banega Genius seasons and play the game.">
+    <meta name="description" content="Official website of Nihal Entertainment Television. Play Kaun Banega Genius and watch tech videos.">
     <title>Nihal Entertainment Television | Official</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     
@@ -13,7 +13,6 @@
             --primary-gold: #ffd700;
             --primary-purple: #240b36;
             --glass-bg: rgba(255, 255, 255, 0.08);
-            --card-bg: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
             --border-glow: 1px solid rgba(255, 255, 255, 0.15);
         }
 
@@ -31,7 +30,7 @@
         /* --- HEADER SECTION --- */
         header {
             text-align: center;
-            padding: 40px 20px 20px;
+            padding: 40px 20px;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -39,6 +38,7 @@
             align-items: center;
         }
 
+        /* Rotating Lights Background */
         header::before {
             content: '';
             position: absolute;
@@ -70,18 +70,18 @@
             text-shadow: 0px 4px 10px rgba(0,0,0,0.5);
         }
 
-        /* --- HERO BANNER (GAME) --- */
+        /* --- NEW: BIG HERO BANNER (ACCESSIBLE) --- */
         .hero-banner-container {
-            margin-top: 20px;
+            margin-top: 30px;
             width: 100%;
-            max-width: 600px;
+            max-width: 600px; /* डेस्कटॉप पर बहुत बड़ा नहीं होगा */
             position: relative;
             transition: transform 0.3s ease;
         }
-        /* Focus/Hover effect for visibility */
-        .hero-banner-container:hover, .hero-banner-container:focus { 
-            transform: scale(1.02); 
-            outline: none;
+
+        /* जब कोई माउस या टैब से फोकस करे तो बैनर बड़ा हो */
+        .hero-banner-container:hover, .hero-banner-container:focus-within {
+            transform: scale(1.03);
         }
 
         .hero-banner-img {
@@ -97,123 +97,67 @@
             display: inline-block;
             background: linear-gradient(to bottom, #ffd700, #e6c200);
             color: #240b36;
-            padding: 12px 30px;
-            font-size: 0.9rem;
+            padding: 15px 40px;
+            font-size: 1rem;
             font-weight: 800;
             text-decoration: none;
             border-radius: 50px;
-            box-shadow: 0 4px 0 #b39700, 0 5px 10px rgba(0,0,0,0.4);
+            box-shadow: 0 5px 0 #b39700, 0 10px 20px rgba(0,0,0,0.4);
             transition: all 0.1s;
             text-transform: uppercase;
-            margin-top: 20px;
+            margin-top: 25px;
             border: none;
             cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
-        .btn-3d:active { transform: translateY(4px); box-shadow: 0 0 0 #b39700; }
+        .btn-3d:active { transform: translateY(4px); box-shadow: 0 0 0 #b39700, inset 0 2px 5px rgba(0,0,0,0.2); }
 
-        .btn-watch {
+        /* Focus State for Accessibility (Keyboard Navigation) */
+        a:focus {
+            outline: 3px solid #fff;
+            outline-offset: 4px;
+        }
+
+        .btn-secondary {
             background: linear-gradient(to bottom, #c31432, #8a0e23);
             color: white;
-            box-shadow: 0 4px 0 #5c0916;
-            padding: 10px 20px;
-            font-size: 0.8rem;
-            margin-top: 10px;
-            width: 100%;
-            display: block;
-            text-align: center;
+            box-shadow: 0 5px 0 #5c0916, 0 10px 20px rgba(0,0,0,0.4);
         }
+        .btn-secondary:active { box-shadow: 0 0 0 #5c0916, inset 0 2px 5px rgba(0,0,0,0.2); }
 
-        /* --- OTT SLIDER SECTION (NEW) --- */
-        .section-title {
-            padding: 0 20px;
-            margin-top: 30px;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-            color: var(--primary-gold);
-            border-left: 4px solid var(--primary-gold);
-            margin-left: 20px;
-        }
-
-        /* This is the magic Slider CSS */
-        .slider-container {
+        /* --- CARDS --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
             display: grid;
-            grid-auto-flow: column;
-            grid-auto-columns: 85%; /* Mobile: Show 85% so user knows to scroll */
-            gap: 15px;
-            overflow-x: auto;
-            overscroll-behavior-inline: contain;
-            padding: 10px 20px 30px 20px;
-            scroll-snap-type: inline mandatory; /* Snaps to card */
-            scrollbar-width: none; /* Hide scrollbar Firefox */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
-        
-        .slider-container::-webkit-scrollbar { display: none; /* Hide scrollbar Chrome/Safari */ }
 
-        .slide-card {
-            scroll-snap-align: center; /* Card stops in center */
-            background: var(--card-bg);
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: var(--border-glow);
-            border-radius: 15px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: space-between;
-            height: 180px;
-            position: relative;
-            overflow: hidden;
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
         }
-
-        /* Colorful gradients for Seasons posters */
-        .season-poster {
-            width: 100%;
-            height: 100px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 2rem;
-            color: rgba(255,255,255,0.2);
-            margin-bottom: 10px;
-            position: relative;
+        .card h2 {
+            color: var(--primary-gold);
+            margin-top: 0;
+            font-size: 1.3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
         }
-        
-        /* Unique colors per season */
-        .s-latest { background: linear-gradient(45deg, #FF512F, #DD2476); } /* Red/Pink */
-        .s-4 { background: linear-gradient(45deg, #1FA2FF, #12D8FA); } /* Blue */
-        .s-3 { background: linear-gradient(45deg, #56ab2f, #a8e063); } /* Green */
-        .s-2 { background: linear-gradient(45deg, #834d9b, #d04ed6); } /* Purple */
-        .s-1 { background: linear-gradient(45deg, #F7971E, #FFD200); } /* Orange */
-
-        .poster-text {
-            color: white;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
-            font-size: 1.5rem;
-            z-index: 2;
-        }
-
-        .slide-card h3 {
-            margin: 0;
-            font-size: 1rem;
-            color: white;
-        }
-        
-        .slide-card p {
-            margin: 2px 0 0;
-            font-size: 0.7rem;
-            color: #ccc;
-        }
-
-        /* --- DESKTOP TWEAKS --- */
-        @media (min-width: 600px) {
-            .slider-container {
-                grid-auto-columns: 280px; /* Fixed width on desktop */
-                justify-content: center; 
-            }
-            .slide-card {
-                scroll-snap-align: start;
-            }
+        .card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 20px;
         }
 
         /* --- FOOTER --- */
@@ -223,7 +167,7 @@
             font-size: 0.8rem;
             color: #888;
             border-top: 1px solid rgba(255,255,255,0.05);
-            margin-top: 30px;
+            margin-top: 40px;
             background: rgba(0,0,0,0.4);
         }
     </style>
@@ -231,73 +175,34 @@
 <body>
 
     <header>
-        <img src="logo.png" alt="NETV Logo" class="logo-img">
+        <img src="logo.png" alt="Nihal Entertainment Television Channel Logo" class="logo-img">
+        
         <h1>Nihal Entertainment<br>Television</h1>
         
-        <a href="https://kaunbanegagenius.netlify.app/" class="hero-banner-container" aria-label="Play Kaun Banega Genius Game. Click to start.">
-            <img src="poster.jpg" alt="Kaun Banega Genius Game Poster" class="hero-banner-img">
+        <a href="https://kaunbanegagenius.netlify.app/" class="hero-banner-container" aria-label="Play Kaun Banega Genius Game - Click on poster to start">
+            <img src="poster.jpg" alt="Poster of Kaun Banega Genius Game. Text says: Gyan ka Mahakumbh. Click to Play." class="hero-banner-img">
         </a>
+        
         <a href="https://kaunbanegagenius.netlify.app/" class="btn-3d" aria-label="Start Game Now">🏆 Play Game Now</a>
     </header>
 
-    <h2 class="section-title">📺 Watch All Seasons</h2>
-    <p style="padding-left: 20px; font-size: 0.8rem; color: #aaa; margin-top:-5px;">Swipe left for more episodes &rarr;</p>
-
-    <div class="slider-container" role="region" aria-label="Kaun Banega Genius Seasons List">
+    <div class="container">
         
-        <div class="slide-card">
-            <div class="season-poster s-latest">
-                <span class="poster-text">S6</span>
-            </div>
-            <div>
-                <h3>Season 6 (Latest)</h3>
-                <p>New Episodes | Full Fun</p>
-            </div>
-            <a href="https://youtube.com/playlist?list=PL9JzfCE3gUOPHlq-ySzvJVy6Pmho8OdA8&si=flcwqnBippLIYjue" target="_blank" class="btn-3d btn-watch" aria-label="Watch Season 6">▶ Watch Now</a>
+        <div class="card">
+            <h2>📺 The Channel</h2>
+            <p>Welcome to the official digital hub of NETV. We bring you the best in tech tutorials, gaming updates, and entertainment.</p>
         </div>
 
-        <div class="slide-card">
-            <div class="season-poster s-4">
-                <span class="poster-text">S4</span>
-            </div>
-            <div>
-                <h3>Season 4</h3>
-                <p>The Classic Hits</p>
-            </div>
-            <a href="https://youtube.com/playlist?list=PL9JzfCE3gUOPztd1gQaL70Nmw5Ef8vMdn&si=Y44xQEssbAFcAL_D" target="_blank" class="btn-3d btn-watch" aria-label="Watch Season 4">▶ Watch Now</a>
+        <div class="card">
+            <h2>🎥 Latest Videos</h2>
+            <p>Catch up with our latest episodes and tutorials directly on YouTube.</p>
+            <a href="https://www.youtube.com/@NihalEntertainmentTelevision" target="_blank" class="btn-3d btn-secondary" aria-label="Visit YouTube Channel to watch videos">▶ Watch Videos</a>
         </div>
 
-        <div class="slide-card">
-            <div class="season-poster s-3">
-                <span class="poster-text">S3</span>
-            </div>
-            <div>
-                <h3>Season 3</h3>
-                <p>Fan Favorite Episodes</p>
-            </div>
-            <a href="https://youtube.com/playlist?list=PL9JzfCE3gUOPIYAalVlCu_HNiXG_D6CAI&si=Hkt4mH8PsB1wsiru" target="_blank" class="btn-3d btn-watch" aria-label="Watch Season 3">▶ Watch Now</a>
-        </div>
-
-        <div class="slide-card">
-            <div class="season-poster s-2">
-                <span class="poster-text">S2</span>
-            </div>
-            <div>
-                <h3>Season 2</h3>
-                <p>Popular Episodes</p>
-            </div>
-            <a href="https://youtube.com/playlist?list=PL9JzfCE3gUOPGEekOh-cLy0wX8w8bKU7w&si=G9W8YX1AhJWPWXU3" target="_blank" class="btn-3d btn-watch" aria-label="Watch Season 2">▶ Watch Now</a>
-        </div>
-
-        <div class="slide-card">
-            <div class="season-poster s-1">
-                <span class="poster-text">S1</span>
-            </div>
-            <div>
-                <h3>Season 1</h3>
-                <p>The Beginning</p>
-            </div>
-            <a href="https://youtube.com/playlist?list=PL9JzfCE3gUOOdlU-RR9btUYGOPywV6_jq&si=EPhYE-sOIBsx0qdM" target="_blank" class="btn-3d btn-watch" aria-label="Watch Season 1">▶ Watch Now</a>
+        <div class="card" id="games">
+            <h2>🧠 Game Details</h2>
+            <p><strong>Kaun Banega Genius</strong><br>Test your knowledge and become the next genius.</p>
+            <a href="https://kaunbanegagenius.netlify.app/" target="_blank" class="btn-3d" aria-label="Play Kaun Banega Genius">🎮 Play Now</a>
         </div>
 
     </div>
@@ -307,4 +212,4 @@
     </footer>
 
 </body>
-    </html>
+                                                      </html>
