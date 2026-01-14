@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Official website of Nihal Entertainment Television. Play Kaun Banega Genius and watch tech videos.">
+    <meta name="description" content="Official website of Nihal Entertainment Television. Play Kaun Banega Genius, watch all seasons, and get tech updates.">
     <title>Nihal Entertainment Television | Official</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     
@@ -13,6 +13,7 @@
             --primary-gold: #ffd700;
             --primary-purple: #240b36;
             --glass-bg: rgba(255, 255, 255, 0.08);
+            --card-bg: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
             --border-glow: 1px solid rgba(255, 255, 255, 0.15);
         }
 
@@ -30,7 +31,7 @@
         /* --- HEADER SECTION --- */
         header {
             text-align: center;
-            padding: 40px 20px;
+            padding: 40px 20px 10px;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -38,7 +39,6 @@
             align-items: center;
         }
 
-        /* Rotating Lights Background */
         header::before {
             content: '';
             position: absolute;
@@ -70,19 +70,15 @@
             text-shadow: 0px 4px 10px rgba(0,0,0,0.5);
         }
 
-        /* --- NEW: BIG HERO BANNER (ACCESSIBLE) --- */
+        /* --- HERO BANNER (GAME) --- */
         .hero-banner-container {
-            margin-top: 30px;
+            margin-top: 20px;
             width: 100%;
-            max-width: 600px; /* डेस्कटॉप पर बहुत बड़ा नहीं होगा */
+            max-width: 600px;
             position: relative;
             transition: transform 0.3s ease;
         }
-
-        /* जब कोई माउस या टैब से फोकस करे तो बैनर बड़ा हो */
-        .hero-banner-container:hover, .hero-banner-container:focus-within {
-            transform: scale(1.03);
-        }
+        .hero-banner-container:hover { transform: scale(1.02); }
 
         .hero-banner-img {
             width: 100%;
@@ -97,39 +93,44 @@
             display: inline-block;
             background: linear-gradient(to bottom, #ffd700, #e6c200);
             color: #240b36;
-            padding: 15px 40px;
-            font-size: 1rem;
+            padding: 12px 30px;
+            font-size: 0.9rem;
             font-weight: 800;
             text-decoration: none;
             border-radius: 50px;
-            box-shadow: 0 5px 0 #b39700, 0 10px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 0 #b39700, 0 5px 10px rgba(0,0,0,0.4);
             transition: all 0.1s;
             text-transform: uppercase;
-            margin-top: 25px;
+            margin-top: 20px;
             border: none;
             cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
         }
-        .btn-3d:active { transform: translateY(4px); box-shadow: 0 0 0 #b39700, inset 0 2px 5px rgba(0,0,0,0.2); }
-
-        /* Focus State for Accessibility (Keyboard Navigation) */
-        a:focus {
-            outline: 3px solid #fff;
-            outline-offset: 4px;
-        }
+        .btn-3d:active { transform: translateY(4px); box-shadow: 0 0 0 #b39700; }
 
         .btn-secondary {
             background: linear-gradient(to bottom, #c31432, #8a0e23);
             color: white;
-            box-shadow: 0 5px 0 #5c0916, 0 10px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 0 #5c0916, 0 5px 10px rgba(0,0,0,0.4);
         }
-        .btn-secondary:active { box-shadow: 0 0 0 #5c0916, inset 0 2px 5px rgba(0,0,0,0.2); }
+        .btn-secondary:active { box-shadow: 0 0 0 #5c0916; }
 
-        /* --- CARDS --- */
+        .btn-watch {
+            background: linear-gradient(to bottom, #c31432, #8a0e23);
+            color: white;
+            box-shadow: 0 4px 0 #5c0916;
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+
+        /* --- INFO GRID (Restored) --- */
         .container {
             max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 30px auto 10px;
+            padding: 0 20px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
@@ -138,7 +139,6 @@
         .card {
             background: var(--glass-bg);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border: var(--border-glow);
             border-radius: 16px;
             padding: 25px;
@@ -160,29 +160,117 @@
             margin-bottom: 20px;
         }
 
-        /* --- FOOTER --- */
+        /* --- OTT SLIDER SECTION --- */
+        .section-title {
+            padding: 0 20px;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: var(--primary-gold);
+            border-left: 4px solid var(--primary-gold);
+            margin-left: 20px; 
+        }
+
+        .slider-container {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 85%;
+            gap: 15px;
+            overflow-x: auto;
+            overscroll-behavior-inline: contain;
+            padding: 10px 20px 40px 20px;
+            scroll-snap-type: inline mandatory;
+            scrollbar-width: none; 
+        }
+        .slider-container::-webkit-scrollbar { display: none; }
+
+        .slide-card {
+            scroll-snap-align: center;
+            background: var(--card-bg);
+            border: var(--border-glow);
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .season-poster {
+            width: 100%;
+            height: 100px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 2rem;
+            color: rgba(255,255,255,0.2);
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .s-latest { background: linear-gradient(45deg, #FF512F, #DD2476); }
+        .s-4 { background: linear-gradient(45deg, #1FA2FF, #12D8FA); }
+        .s-3 { background: linear-gradient(45deg, #56ab2f, #a8e063); }
+        .s-2 { background: linear-gradient(45deg, #834d9b, #d04ed6); }
+        .s-1 { background: linear-gradient(45deg, #F7971E, #FFD200); }
+
+        .poster-text {
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            font-size: 1.5rem;
+            z-index: 2;
+        }
+
+        .slide-card h3 { margin: 0; font-size: 1rem; color: white; }
+        .slide-card p { margin: 2px 0 0; font-size: 0.7rem; color: #ccc; }
+
+        @media (min-width: 600px) {
+            .slider-container { grid-auto-columns: 280px; justify-content: center; }
+            .slide-card { scroll-snap-align: start; }
+        }
+
+        /* --- FOOTER & LEGAL --- */
         footer {
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
             font-size: 0.8rem;
             color: #888;
             border-top: 1px solid rgba(255,255,255,0.05);
-            margin-top: 40px;
+            margin-top: 30px;
             background: rgba(0,0,0,0.4);
         }
+        
+        .legal-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .legal-links a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.75rem;
+            transition: color 0.3s;
+        }
+        
+        .legal-links a:hover { color: #ffd700; }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="logo.png" alt="Nihal Entertainment Television Channel Logo" class="logo-img">
-        
+        <img src="logo.png" alt="NETV Logo" class="logo-img">
         <h1>Nihal Entertainment<br>Television</h1>
         
-        <a href="https://kaunbanegagenius.netlify.app/" class="hero-banner-container" aria-label="Play Kaun Banega Genius Game - Click on poster to start">
-            <img src="poster.jpg" alt="Poster of Kaun Banega Genius Game. Text says: Gyan ka Mahakumbh. Click to Play." class="hero-banner-img">
+        <a href="https://kaunbanegagenius.netlify.app/" class="hero-banner-container" aria-label="Play Kaun Banega Genius Game">
+            <img src="poster.jpg" alt="Kaun Banega Genius Game Poster" class="hero-banner-img">
         </a>
-        
         <a href="https://kaunbanegagenius.netlify.app/" class="btn-3d" aria-label="Start Game Now">🏆 Play Game Now</a>
     </header>
 
@@ -190,26 +278,90 @@
         
         <div class="card">
             <h2>📺 The Channel</h2>
-            <p>Welcome to the official digital hub of NETV. We bring you the best in tech tutorials, gaming updates, and entertainment.</p>
+            <p>Welcome to NETV. We bring you the best in tech tutorials, gaming updates, and entertainment.</p>
         </div>
 
         <div class="card">
-            <h2>🎥 Latest Videos</h2>
-            <p>Catch up with our latest episodes and tutorials directly on YouTube.</p>
-            <a href="https://www.youtube.com/@NihalEntertainmentTelevision" target="_blank" class="btn-3d btn-secondary" aria-label="Visit YouTube Channel to watch videos">▶ Watch Videos</a>
+            <h2>🎥 Official Channel</h2>
+            <p>Subscribe for the latest updates and full episodes.</p>
+            <a href="https://www.youtube.com/@NihalEntertainmentTelevision" target="_blank" class="btn-3d btn-secondary">▶ Visit Channel</a>
         </div>
 
-        <div class="card" id="games">
-            <h2>🧠 Game Details</h2>
-            <p><strong>Kaun Banega Genius</strong><br>Test your knowledge and become the next genius.</p>
-            <a href="https://kaunbanegagenius.netlify.app/" target="_blank" class="btn-3d" aria-label="Play Kaun Banega Genius">🎮 Play Now</a>
+    </div>
+
+    <h2 class="section-title">📺 Watch All Seasons</h2>
+    <p style="padding-left: 20px; font-size: 0.8rem; color: #aaa; margin-top:-5px;">Swipe left for more episodes &rarr;</p>
+
+    <div class="slider-container">
+        
+        <div class="slide-card">
+            <div class="season-poster s-latest">
+                <span class="poster-text">S5</span>
+            </div>
+            <div>
+                <h3>Season 5 (Latest)</h3>
+                <p>New Episodes | Full Fun</p>
+            </div>
+            <a href="https://youtube.com/playlist?list=PL9JzfCE3gUOPHlq-ySzvJVy6Pmho8OdA8&si=flcwqnBippLIYjue" target="_blank" class="btn-3d btn-watch">▶ Watch Now</a>
+        </div>
+
+        <div class="slide-card">
+            <div class="season-poster s-4">
+                <span class="poster-text">S4</span>
+            </div>
+            <div>
+                <h3>Season 4</h3>
+                <p>The Classic Hits</p>
+            </div>
+            <a href="https://youtube.com/playlist?list=PL9JzfCE3gUOPztd1gQaL70Nmw5Ef8vMdn&si=Y44xQEssbAFcAL_D" target="_blank" class="btn-3d btn-watch">▶ Watch Now</a>
+        </div>
+
+        <div class="slide-card">
+            <div class="season-poster s-3">
+                <span class="poster-text">S3</span>
+            </div>
+            <div>
+                <h3>Season 3</h3>
+                <p>Fan Favorite Episodes</p>
+            </div>
+            <a href="https://youtube.com/playlist?list=PL9JzfCE3gUOPIYAalVlCu_HNiXG_D6CAI&si=Hkt4mH8PsB1wsiru" target="_blank" class="btn-3d btn-watch">▶ Watch Now</a>
+        </div>
+
+        <div class="slide-card">
+            <div class="season-poster s-2">
+                <span class="poster-text">S2</span>
+            </div>
+            <div>
+                <h3>Season 2</h3>
+                <p>Popular Episodes</p>
+            </div>
+            <a href="https://youtube.com/playlist?list=PL9JzfCE3gUOPGEekOh-cLy0wX8w8bKU7w&si=G9W8YX1AhJWPWXU3" target="_blank" class="btn-3d btn-watch">▶ Watch Now</a>
+        </div>
+
+        <div class="slide-card">
+            <div class="season-poster s-1">
+                <span class="poster-text">S1</span>
+            </div>
+            <div>
+                <h3>Season 1</h3>
+                <p>The Beginning</p>
+            </div>
+            <a href="https://youtube.com/playlist?list=PL9JzfCE3gUOOdlU-RR9btUYGOPywV6_jq&si=EPhYE-sOIBsx0qdM" target="_blank" class="btn-3d btn-watch">▶ Watch Now</a>
         </div>
 
     </div>
 
     <footer>
         <p>&copy; Copyright 2026 <strong>Nihal Pictures Entertainment</strong>.<br>All rights reserved.</p>
+        
+        <div class="legal-links">
+            <a href="#">Privacy Policy</a>
+            <span>|</span>
+            <a href="#">Terms & Conditions</a>
+            <span>|</span>
+            <a href="#">Disclaimer</a>
+        </div>
     </footer>
 
 </body>
-                                                      </html>
+</html>
