@@ -6,7 +6,7 @@
     
     <meta name="google-site-verification" content="hOSxFDGWYTQdsfGP-UpF1tngp_DD0rpefJTMKMNNXzU" />
     
-    <meta name="description" content="Official website of Nihal Entertainment Television. Play Kaun Banega Genius, watch all seasons, and get tech updates.">
+    <meta name="description" content="Official website of Nihal Entertainment Television. Play Kaun Banega Genius, The Ultimate Nihal Gaming Space, watch all seasons, and get tech updates.">
     <title>Nihal Entertainment Television | Official</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     
@@ -73,15 +73,36 @@
             text-shadow: 0px 4px 10px rgba(0,0,0,0.5);
         }
 
-        /* --- HERO BANNER (GAME) --- */
-        .hero-banner-container {
-            margin-top: 20px;
+        /* --- HERO GAMES SLIDER --- */
+        .swipe-hint {
+            color: #ffd700;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            margin-bottom: 0;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+
+        .hero-slider-container {
             width: 100%;
             max-width: 600px;
-            position: relative;
-            transition: transform 0.3s ease;
+            margin: 10px auto 0;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* Firefox */
+            gap: 20px;
+            padding-bottom: 20px;
         }
-        .hero-banner-container:hover { transform: scale(1.02); }
+        .hero-slider-container::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+        .hero-slide {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
         .hero-banner-img {
             width: 100%;
@@ -89,7 +110,9 @@
             border: 3px solid #ffd700;
             box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
             display: block;
+            transition: transform 0.3s ease;
         }
+        .hero-banner-img:hover { transform: scale(1.02); }
 
         /* --- BUTTONS --- */
         .btn-3d {
@@ -107,6 +130,8 @@
             margin-top: 20px;
             border: none;
             cursor: pointer;
+            width: 80%;
+            max-width: 300px;
         }
         .btn-3d:active { transform: translateY(4px); box-shadow: 0 0 0 #b39700; }
 
@@ -132,7 +157,7 @@
         /* --- INFO GRID --- */
         .container {
             max-width: 1000px;
-            margin: 30px auto 10px;
+            margin: 10px auto;
             padding: 0 20px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -271,10 +296,25 @@
         <img src="logo.png" alt="NETV Logo" class="logo-img">
         <h1>Nihal Entertainment<br>Television</h1>
         
-        <a href="https://kaunbanegagenius.netlify.app/" class="hero-banner-container" aria-label="Play Kaun Banega Genius Game">
-            <img src="poster.jpg" alt="Kaun Banega Genius Game Poster" class="hero-banner-img">
-        </a>
-        <a href="https://kaunbanegagenius.netlify.app/" class="btn-3d" aria-label="Start Game Now">🏆 Play Game Now</a>
+        <p class="swipe-hint">Swipe left for more games &rarr;</p>
+
+        <div class="hero-slider-container">
+            
+            <div class="hero-slide">
+                <a href="https://kaunbanegagenius.netlify.app/" aria-label="Play Kaun Banega Genius Game">
+                    <img src="poster.jpg" alt="Kaun Banega Genius Poster" class="hero-banner-img">
+                </a>
+                <a href="https://kaunbanegagenius.netlify.app/" class="btn-3d">🏆 Play Genius</a>
+            </div>
+
+            <div class="hero-slide">
+                <a href="https://theultimatenihalgamingspece.netlify.app/" aria-label="Play The Ultimate Nihal Gaming Space">
+                    <img src="gaming_space.png" alt="Gaming Space Poster" class="hero-banner-img">
+                </a>
+                <a href="https://theultimatenihalgamingspece.netlify.app/" class="btn-3d">🎮 Play Gaming Space</a>
+            </div>
+
+        </div>
     </header>
 
     <div class="container">
@@ -368,3 +408,4 @@
 
 </body>
 </html>
+
